@@ -14,10 +14,12 @@ public class Spiel
         zahl2 = r.nextInt(2);
     }
 
+    /*
     public void druckeAktuellenSpieler() 
     {
             System.out.println("Am Zug ist " + aktuellerSpieler.farbe);
     }
+    */
 
     public static void main(String[] args)
     {
@@ -35,7 +37,7 @@ public class Spiel
             for(int x = 0; x <= 4; x++) 
             {
 
-                if (x == 2 && y == 2 && /*!spielIstFertig()*/)
+                if (x == 2 && y == 2 /* && !spielIstFertig()*/)
                     System.out.print("X ");
                 else if (f1.x == x && f1.y == y && f2.x == x && f2.y == y)
                     System.out.print("BR");
