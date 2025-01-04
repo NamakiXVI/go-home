@@ -16,4 +16,36 @@ private class Figur{
         Figur f1 = new Figur ("blau", 0, 0);
         Figur f2 = new Figur ("rot", 4, 4);
     }
+
+    public boolean gewonnen()
+    {
+        if(this.x == 2 && this.y == 2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void bewegeHoch()
+    {
+        this.y = this.y + 1;
+    }
+
+    public void bewegeRunter()
+    {
+        this.y = this.y - 1;
+    }
+
+    public void bewegeLinks()
+    {
+        this.x = this.x - 1;
+    }
+
+    public void bewegeRechts()
+    {
+        this.x = this.x + 1;
+    }
 }
