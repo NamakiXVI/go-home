@@ -66,7 +66,7 @@ public class Spiel
 
         System.out.println("Am Zug ist " + aktuellerSpieler.farbe);
 
-        Bewegung(f1);
+        Bewegung(aktuelleFigur1, aktuelleFigur2);
     }
 
     public static void main(String[] args)
@@ -103,7 +103,7 @@ public class Spiel
         druckeAktuellenSpieler();
     }
 
-    public void Bewegung(Figur f1)
+    public void Bewegung(Figur f_1, Figur f_2)
     {
         Scanner scanner1 = new Scanner(System.in);
         System.out.print("Wohin möchtest du gehen? Hoch(w), Rechts(d), Runter(s) oder Links(a): ");
@@ -112,16 +112,20 @@ public class Spiel
         System.out.println(string_input);
 
         if(string_input.equals("w")){
-            f1.bewegeHoch();
+            f_1.bewegeHoch();
+            f_2.bewegeHoch();
         }
         else if(string_input.equals("a")){
-            f1.bewegeRechts();
+            f_1.bewegeRechts();
+            f_2.bewegeRechts();
         }
         else if(string_input.equals("s")){
-            f1.bewegeRunter();
+            f_1.bewegeRunter();
+            f2.bewegeRunter();
         }
         else if(string_input.equals("d")){
-            f1.bewegeLinks();
+            f_1.bewegeLinks();
+            f_2.bewegeLinks();
         }
         druckeSpielfeld();
     }
