@@ -20,12 +20,11 @@ public class Figur{
     {
         if(this.x == 2 && this.y == 2)
         {
+            System.out.println(this.farbe + " hat Gewonnen");
             return true;
         }
-        else
-        {
-            return false;
-        }
+        
+        return false;
     }
 
     public void bewegeHoch()
@@ -40,11 +39,28 @@ public class Figur{
 
     public void bewegeLinks()
     {
-        this.x = this.x + 1;
+        this.x = this.x - 1;
     }
 
     public void bewegeRechts()
     {
-        this.x = this.x - 1;
+        this.x = this.x + 1;
+    }
+
+    public void checkFeld()
+    {
+        if(this.x > 4)
+        {
+            this.x = 0;
+        }else if(this.x < 0)
+        {
+            this.x = 4;
+        }else if(this.y > 4)
+        {
+            this.y = 0;
+        }else if(this.y < 0)
+        {
+            this.y = 4;
+        }
     }
 }
