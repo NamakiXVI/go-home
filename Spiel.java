@@ -1,32 +1,77 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Spiel
 {
+    int zahl1;
+    int zahl2;
 
+    Figur f1 = new Figur("Blau", 0, 0);
+    Figur f2 = new Figur("Rot", 4, 4);
 
-        Random r = new Random();
-        int zahl1;
-        int zahl2;
-
+    Figur aktuelleFigur1;
+    Figur aktuelleFigur2;
+    Figur aktuellerSpieler;
+    
     public void coinThrow()
     {
+        Random r = new Random();
         zahl1 = r.nextInt(2);
         zahl2 = r.nextInt(2);
+
+        String Ergebnis = "";
+
+        if(zahl1 == 0)
+        {
+            Ergebnis += "Blau";
+        }else
+        {
+            Ergebnis += "Rot";
+        }
+
+        if(zahl2 == 0)
+        {
+            Ergebnis += "Blau";
+        }else
+        {
+            Ergebnis += "Rot";
+        }
+        
+        System.out.println(Ergebnis);
     }
 
-    /*
     public void druckeAktuellenSpieler() 
     {
-            System.out.println("Am Zug ist " + aktuellerSpieler.farbe);
+        if(zahl1 == 1 && zahl2 == 1)
+        {
+            aktuelleFigur1 = f2;
+            aktuelleFigur2 = f2;
+            aktuellerSpieler = f2;
+        }else if(zahl1 == 0 && zahl2 == 1)
+        {
+            aktuelleFigur1 = f1;
+            aktuelleFigur1 = f2;
+            aktuellerSpieler = f1;
+        }else if(zahl1 == 1 && zahl2 == 0)
+        {
+            aktuelleFigur1 = f2;
+            aktuelleFigur2 = f1;
+            aktuellerSpieler = f2;
+        }else if (zahl1 == 0 && zahl2 == 0)
+        {
+            aktuelleFigur1 = f1;
+            aktuelleFigur2 = f1;
+            aktuellerSpieler = f1;
+        }
+
+        System.out.println("Am Zug ist " + aktuellerSpieler.farbe);
     }
-    */
 
     public static void main(String[] args)
     {
-        Figur f1 = new Figur("Blau", 0, 0);
-        Figur f2 = new Figur("Rot", 4, 4);
-
-        druckeSpielfeld();
+        Spiel spiel = new Spiel();
+        spiel.druckeSpielfeld();
+        spiel.druckeAktuellenSpieler();
     }
 
     public void druckeSpielfeld() 
@@ -40,7 +85,7 @@ public class Spiel
                 if (x == 2 && y == 2 /* && !spielIstFertig()*/)
                     System.out.print("X ");
                 else if (f1.x == x && f1.y == y && f2.x == x && f2.y == y)
-                    System.out.print("BR");
+                    System.out.print("BR ");
                 else if(f1.x == x && f1.y == y)
                     System.out.print("B ");
                 else if(f2.x == x && f2.y == y)
@@ -49,7 +94,9 @@ public class Spiel
                     System.out.print(". ");
 
             }
-            System.out.println(".");
+            System.out.println();
         }
+        coinThrow();
+
     }
 }
