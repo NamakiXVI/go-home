@@ -121,7 +121,7 @@ public class Spiel
         }
         else if(string_input.equals("s")){
             f_1.bewegeRunter();
-            f2.bewegeRunter();
+            f_2.bewegeRunter();
         }
         else if(string_input.equals("d")){
             f_1.bewegeLinks();
