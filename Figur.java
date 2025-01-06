@@ -30,21 +30,21 @@ public class Figur{
 
     public void bewegeHoch()
     {
-        this.y = this.y + 1;
+        this.y = this.y - 1;
     }
 
     public void bewegeRunter()
     {
-        this.y = this.y - 1;
+        this.y = this.y + 1;
     }
 
     public void bewegeLinks()
     {
-        this.x = this.x - 1;
+        this.x = this.x + 1;
     }
 
     public void bewegeRechts()
     {
-        this.x = this.x + 1;
+        this.x = this.x - 1;
     }
 }
