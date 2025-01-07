@@ -73,7 +73,6 @@ public class Spiel
     {
         Spiel spiel = new Spiel();
         spiel.druckeSpielfeld();
-        spiel.druckeAktuellenSpieler();
         
     }
 
@@ -176,7 +175,6 @@ public class Spiel
 //        System.out.println(f2.x + " " + f2.y);
 
         if (spielIstFertig()) return;
-
         druckeSpielfeld();
     }
 }
