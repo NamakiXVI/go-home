@@ -51,16 +51,16 @@ public class Figur{
     {
         if(this.x > 4)
         {
-            this.x = 0;
+            this.x = this.x - 5;
         }else if(this.x < 0)
         {
-            this.x = 4;
+            this.x = this.x + 5;
         }else if(this.y > 4)
         {
-            this.y = 0;
+            this.y = this.y - 5;
         }else if(this.y < 0)
         {
-            this.y = 4;
+            this.y = this.y + 5;
         }
     }
 }
