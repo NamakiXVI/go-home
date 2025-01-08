@@ -40,7 +40,7 @@ public class Spiel extends JFrame
             {
                 JButton button = new JButton();
                 button.setEnabled(false);
-                button.setFont(new Font("Arial", Font.PLAIN, 20));
+                button.setFont(new Font("Arial", Font.PLAIN, 25));
                 spielfeld[y][x] = button;
                 boardPanel.add(button);
             }
@@ -104,6 +104,7 @@ public class Spiel extends JFrame
         }
         
         CoinLabel.setText(Ergebnis);
+        System.out.println(Ergebnis);
     }
 
     public void druckeAktuellenSpieler() 
