@@ -8,7 +8,6 @@ public class Spiel extends JFrame
     private final int groesse = 5;
     private JButton[][] spielfeld;
     private JLabel statusLabel;
-    private JLabel CoinLabel;
     
     Icon Haus = new ImageIcon(this.getClass().getResource("img/Haus.png"));
     Icon FRot = new ImageIcon("img/FigurRed.png");
