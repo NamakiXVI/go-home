@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.ImageObserver;
 import java.util.Random;
 
 public class Spiel extends JFrame
@@ -9,6 +10,16 @@ public class Spiel extends JFrame
     private JButton[][] spielfeld;
     private JLabel statusLabel;
     private JLabel CoinLabel;
+    
+    Icon Haus = new ImageIcon(this.getClass().getResource("img/Haus.png"));
+    Icon FRot = new ImageIcon("img/FigurRed.png");
+    Icon FBlau = new ImageIcon("img/FigurBlue.png");
+    Icon Street = new ImageIcon("img/Street.png");
+    Icon BCoin = new ImageIcon("img/BlueCoin.png");
+    Icon RCoin = new ImageIcon("img/RedCoin.png");
+    
+    JButton Coin1 = new JButton(RCoin);
+    JButton Coin2 = new JButton(BCoin);
 
     //münzenzahlen
     int zahl1;
@@ -25,7 +36,7 @@ public class Spiel extends JFrame
     public Spiel()
     {
         setTitle("Go Home Spiel");
-        setSize(600, 700);
+        setSize(670, 750);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -39,8 +50,7 @@ public class Spiel extends JFrame
             for (int x = 0; x < groesse; x++) 
             {
                 JButton button = new JButton();
-                button.setEnabled(false);
-                button.setFont(new Font("Arial", Font.PLAIN, 25));
+                button.setFocusPainted(true);
                 spielfeld[y][x] = button;
                 boardPanel.add(button);
             }
@@ -53,10 +63,15 @@ public class Spiel extends JFrame
         statusPanel.add(statusLabel, BorderLayout.CENTER);
 
         // Erstellt den Coin Panel
-        JPanel CoinPanel = new JPanel(new BorderLayout());
+        JPanel CoinPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         CoinLabel = new JLabel("");
-        CoinLabel.setFont(new Font("Arial", Font.BOLD, 20));
         CoinPanel.add(CoinLabel, BorderLayout.CENTER);
+        CoinPanel.add(Coin1,BorderLayout.EAST);
+        Coin1.setBorderPainted(false);
+        Coin1.setBackground(Color.WHITE);
+        CoinPanel.add(Coin2,BorderLayout.EAST);
+        Coin2.setBorderPainted(false);
+        Coin2.setBackground(Color.WHITE);
 
         // Fügt das Movement als buttons hinzu
         JPanel controlPanel = new JPanel(new GridLayout(1, 4));
@@ -70,7 +85,7 @@ public class Spiel extends JFrame
             controlPanel.add(moveButton);
         }
 
-        // Add panels to the frame
+        //Fügt die Panels in den Frame
         add(boardPanel, BorderLayout.CENTER);
         add(statusPanel, BorderLayout.NORTH);
         add(CoinPanel, BorderLayout.PAGE_START);
@@ -79,6 +94,7 @@ public class Spiel extends JFrame
         // Initialize the game board
         updateSpielfeld();
     }
+
     public void coinThrow()
     {
         Random r = new Random();
@@ -90,20 +106,23 @@ public class Spiel extends JFrame
         if(zahl1 == 0)
         {
             Ergebnis += "Blau ";
+            Coin1.setIcon(BCoin);
         }else
         {
             Ergebnis += "Rot ";
+            Coin1.setIcon(RCoin);
         }
 
         if(zahl2 == 0)
         {
             Ergebnis += "Blau ";
+            Coin2.setIcon(BCoin);
         }else
         {
             Ergebnis += "Rot ";
+            Coin2.setIcon(RCoin);
         }
         
-        CoinLabel.setText(Ergebnis);
         System.out.println(Ergebnis);
     }
 
@@ -117,7 +136,7 @@ public class Spiel extends JFrame
         }else if(zahl1 == 0 && zahl2 == 1)
         {
             aktuelleFigur1 = f1;
-            aktuelleFigur1 = f2;
+            aktuelleFigur2 = f2;
             aktuellerSpieler = f1;
         }else if(zahl1 == 1 && zahl2 == 0)
         {
@@ -171,15 +190,15 @@ public class Spiel extends JFrame
             {
 
                 if (x == 2 && y == 2 && !spielIstFertig())
-                    spielfeld[2][2].setText("X");
+                    spielfeld[2][2].setIcon(Haus);
                 else if (f1.x == x && f1.y == y && f2.x == x && f2.y == y)
                     spielfeld[y][x].setText("BR");
                 else if(f1.x == x && f1.y == y)
-                    spielfeld[f1.y][f1.x].setText("B");
+                    spielfeld[f1.y][f1.x].setIcon(FBlau);
                 else if(f2.x == x && f2.y == y)
-                    spielfeld[f2.y][f2.x].setText("R");
+                    spielfeld[f2.y][f2.x].setIcon(FRot);
                 else
-                    spielfeld[y][x].setText("");
+                    spielfeld[y][x].setIcon(Street);
 
             }
         }

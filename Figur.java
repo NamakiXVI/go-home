@@ -12,9 +12,6 @@ public class Figur{
         this.x = 0;
         this.y = 0;
     }
-    public static void main(String[]args)
-    {
-    }
 
     public boolean gewonnen()
     {
