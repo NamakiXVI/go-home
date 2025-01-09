@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.ImageObserver;
 import java.util.Random;
 
 public class Spiel extends JFrame
@@ -91,7 +90,7 @@ public class Spiel extends JFrame
         add(CoinPanel, BorderLayout.PAGE_START);
         add(controlPanel, BorderLayout.SOUTH);
 
-        // Initialize the game board
+        // erstellt das spielfeld
         updateSpielfeld();
     }
 
@@ -214,11 +213,6 @@ public class Spiel extends JFrame
     {
         if (spielIstFertig()) return;
 
-//        Scanner scanner1 = new Scanner(System.in);
-//        System.out.print("Wohin möchtest du gehen? Hoch(w), Rechts(d), Runter(s) oder Links(a): ");
-//        String string_input = scanner1.nextLine();
-
-
         if (f_1 == f_2) 
         {
             switch (Richtung) 
@@ -247,10 +241,6 @@ public class Spiel extends JFrame
             statusLabel.setText(aktuellerSpieler.farbe + " hat das Spiel gewonnen!");
             return;
         }
-//        System.out.println(aktuelleFigur1.x + " " + aktuelleFigur1.y);
-//        System.out.println(aktuelleFigur2.x + " " + aktuelleFigur2.y);
-//        System.out.println(f1.x + " " + f1.y);
-//        System.out.println(f2.x + " " + f2.y);
 
         if (spielIstFertig()) return;
 
