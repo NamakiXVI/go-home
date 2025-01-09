@@ -38,12 +38,13 @@ public class Spiel extends JFrame
         setSize(670, 750);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+        setResizable(false);
 
         //  Erstellt das Spielfeld
         JPanel boardPanel = new JPanel(new GridLayout(groesse, groesse));
         spielfeld = new JButton[groesse][groesse];
         
-        // Spielfeld initialisieren
+        // Spielfeld starten
         for (int y = 0; y < groesse; y++) 
         {
             for (int x = 0; x < groesse; x++) 
@@ -56,19 +57,14 @@ public class Spiel extends JFrame
         }
 
         // Erstellt den Status Panel
-        JPanel statusPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel statusPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         statusLabel = new JLabel("Spiel gestartet. Blau ist am Zug.");
-        statusLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+        statusLabel.setFont(new Font("Pixelify Sans", Font.BOLD, 20));
         statusPanel.add(statusLabel, BorderLayout.CENTER);
-
-        // Erstellt den Coin Panel
-        JPanel CoinPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        CoinLabel = new JLabel("");
-        CoinPanel.add(CoinLabel, BorderLayout.CENTER);
-        CoinPanel.add(Coin1,BorderLayout.EAST);
+        statusPanel.add(Coin1,BorderLayout.EAST);
         Coin1.setBorderPainted(false);
         Coin1.setBackground(Color.WHITE);
-        CoinPanel.add(Coin2,BorderLayout.EAST);
+        statusPanel.add(Coin2,BorderLayout.EAST);
         Coin2.setBorderPainted(false);
         Coin2.setBackground(Color.WHITE);
 
@@ -87,7 +83,6 @@ public class Spiel extends JFrame
         //Fügt die Panels in den Frame
         add(boardPanel, BorderLayout.CENTER);
         add(statusPanel, BorderLayout.NORTH);
-        add(CoinPanel, BorderLayout.PAGE_START);
         add(controlPanel, BorderLayout.SOUTH);
 
         // erstellt das spielfeld
@@ -155,12 +150,8 @@ public class Spiel extends JFrame
 
     public static void main(String[] args)
     {
-        SwingUtilities.invokeLater(() -> 
-        {
-            Spiel app = new Spiel();
-            app.setVisible(true);
-        });
-        
+            Spiel gohome = new Spiel();
+            gohome.setVisible(true);
     }
 
     private boolean spielIstFertig() 
