@@ -12,9 +12,13 @@ public class Spiel extends JFrame
     Icon Haus = new ImageIcon(this.getClass().getResource("img/Haus.png"));
     Icon FRot = new ImageIcon("img/FigurRed.png");
     Icon FBlau = new ImageIcon("img/FigurBlue.png");
+    Icon FigurBR = new ImageIcon("img/BRFigur.png");
     Icon Street = new ImageIcon("img/Street.png");
     Icon BCoin = new ImageIcon("img/BlueCoin.png");
     Icon RCoin = new ImageIcon("img/RedCoin.png");
+    Icon blue_on_house = new ImageIcon("img/B_on_house.png");
+    Icon red_on_house = new ImageIcon("img/R_on_house.png");
+
     
     JButton Coin1 = new JButton(RCoin);
     JButton Coin2 = new JButton(BCoin);
@@ -157,12 +161,14 @@ public class Spiel extends JFrame
     {
         if (f1.x == 2 && f1.y == 2) 
         {
-            JOptionPane.showMessageDialog(this, f1.farbe + " hat gewonnen!");
+//            spielfeld[2][2].setIcon(blue_on_house);
+//            JOptionPane.showMessageDialog(this, f1.farbe + " hat gewonnen!");
             return true;
         }
         if (f2.x == 2 && f2.y == 2) 
         {
-            JOptionPane.showMessageDialog(this, f2.farbe + " hat gewonnen!");
+//            spielfeld[2][2].setIcon(red_on_house);
+//            JOptionPane.showMessageDialog(this, f2.farbe + " hat gewonnen!");
             return true;
         }
         return false;
@@ -170,7 +176,6 @@ public class Spiel extends JFrame
 
     public void updateSpielfeld() 
     {
-        if (spielIstFertig()) return;
 
         for(int y = 0; y <= 4; y++) 
         {
@@ -181,16 +186,41 @@ public class Spiel extends JFrame
                 if (x == 2 && y == 2 && !spielIstFertig())
                     spielfeld[2][2].setIcon(Haus);
                 else if (f1.x == x && f1.y == y && f2.x == x && f2.y == y)
-                    spielfeld[y][x].setText("BR");
-                else if(f1.x == x && f1.y == y)
+                    spielfeld[y][x].setIcon(FigurBR);
+                else if(f1.x == x && f1.y == y && !(f1.x == 2 && f1.y == 2))
+                {
                     spielfeld[f1.y][f1.x].setIcon(FBlau);
-                else if(f2.x == x && f2.y == y)
+                    System.out.println("BLau: " + f1.x + f1.y);
+                }
+                else if(f2.x == x && f2.y == y && !(f2.x == 2 && f2.y == 2))
+                {
                     spielfeld[f2.y][f2.x].setIcon(FRot);
+                    System.out.println("Rot: " + f2.x + f2.y);
+                }
+                else if(f2.x == 2 && f2.y == 2)
+                {
+                    spielfeld[2][2].setIcon(red_on_house);
+                    JOptionPane.showMessageDialog(this, f2.farbe + " hat gewonnen!");
+                    return;
+                }
+                else if(f1.x == 2 && f1.y == 2)
+                {
+                    spielfeld[2][2].setIcon(blue_on_house);
+                    JOptionPane.showMessageDialog(this, f1.farbe + " hat gewonnen!");
+                    return;
+                }
                 else
                     spielfeld[y][x].setIcon(Street);
-
             }
         }
+
+        if (spielIstFertig()) 
+        {
+            statusLabel.setText(aktuellerSpieler.farbe + " hat das Spiel gewonnen!");
+            return;
+        }
+
+        if (spielIstFertig()) return;
 
         System.out.println(f1.x + " " + f1.y);
         System.out.println(f2.x + " " + f2.y);
@@ -225,14 +255,6 @@ public class Spiel extends JFrame
 
         aktuelleFigur1.checkFeld();
         aktuelleFigur2.checkFeld();
-
-        if (spielIstFertig()) 
-        {
-            statusLabel.setText(aktuellerSpieler.farbe + " hat das Spiel gewonnen!");
-            return;
-        }
-
-        if (spielIstFertig()) return;
 
         updateSpielfeld();
     }
