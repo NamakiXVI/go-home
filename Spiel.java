@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+
 import java.awt.*;
 import java.util.Random;
 
@@ -8,7 +10,6 @@ public class Spiel extends JFrame
     private final int groesse = 5;
     private JButton[][] spielfeld;
     private JLabel statusLabel;
-    private JLabel logoLabel;
     
     Icon Haus = new ImageIcon(this.getClass().getResource("img/Haus.png"));
     Icon FRot = new ImageIcon("img/FigurRed.png");
@@ -25,6 +26,7 @@ public class Spiel extends JFrame
     
     JButton Coin1 = new JButton(RCoin);
     JButton Coin2 = new JButton(BCoin);
+    JButton Go_Home = new JButton(go_home);
 
     //münzenzahlen
     int zahl1;
@@ -65,25 +67,35 @@ public class Spiel extends JFrame
         }
 
         // Erstellt den Status Panel
-        JPanel statusPanel = new JPanel(new FlowLayout(0, 40, 0));
-        logoLabel = new JLabel(go_home);
-        statusPanel.add(logoLabel,BorderLayout.WEST);
+        JPanel statusPanel = new JPanel(new BorderLayout());
+        statusPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        statusPanel.setBackground(Color.LIGHT_GRAY);
 
+        JPanel homePanel = new JPanel(new BorderLayout());
+        homePanel.add(Go_Home);
+        Go_Home.setBackground(Color.LIGHT_GRAY);
+        Go_Home.setBorderPainted(false);
+        statusPanel.add(homePanel, BorderLayout.WEST);
+
+        statusPanel.add(Go_Home,BorderLayout.WEST);
         statusLabel = new JLabel("Spiel gestartet. Blau ist am Zug.");
-        statusLabel.setFont(new Font("Pixelify Sans", Font.BOLD, 20));
-        statusPanel.add(statusLabel, BorderLayout.EAST);
+        statusLabel.setFont(new Font("Kino MT", Font.BOLD, 20));
+        statusPanel.add(statusLabel, BorderLayout.CENTER);
 
-        statusPanel.add(Coin1,BorderLayout.EAST);
+        JPanel CoinPanel = new JPanel(new GridLayout(1, 2));
+        CoinPanel.add(Coin1,BorderLayout.EAST);
         Coin1.setBorderPainted(false);
-        Coin1.setBackground(Color.WHITE);
+        Coin1.setBackground(Color.LIGHT_GRAY);
 
-        statusPanel.add(Coin2,BorderLayout.EAST);
+        CoinPanel.add(Coin2,BorderLayout.EAST);
         Coin2.setBorderPainted(false);
-        Coin2.setBackground(Color.WHITE);
+        Coin2.setBackground(Color.LIGHT_GRAY);
+
+        statusPanel.add(CoinPanel, BorderLayout.EAST);
 
         // Fügt das Movement als buttons hinzu
         JPanel controlPanel = new JPanel(new GridLayout(1, 4));
-        String[] directions = {"HOCH", "LINKS", "RUNTER", "RECHTS"};
+        String[] directions = {"LINKS", "HOCH", "RUNTER", "RECHTS"};
 
         for (int i = 0; i < directions.length; i++) 
         {
