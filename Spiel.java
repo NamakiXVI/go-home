@@ -25,6 +25,8 @@ public class Spiel extends JFrame
     JButton Coin1 = new JButton(RCoin);
     JButton Coin2 = new JButton(BCoin);
     JButton Go_Home = new JButton(go_home);
+    JButton[] bewegungsButtons; // Array für Bewegungs-Buttons
+
 
     //münzenzahlen
     int zahl1;
@@ -78,7 +80,7 @@ public class Spiel extends JFrame
 
         statusPanel.add(Go_Home,BorderLayout.WEST);
         statusLabel = new JLabel("Spiel gestartet. Blau ist am Zug.");
-        statusLabel.setFont(new Font("Kino MT", Font.BOLD, 20));
+        statusLabel.setFont(new Font("Kino MT", Font.BOLD, 25));
         statusPanel.add(statusLabel, BorderLayout.CENTER);
 
         JPanel CoinPanel = new JPanel(new GridLayout(1, 2));
@@ -93,17 +95,18 @@ public class Spiel extends JFrame
         statusPanel.add(CoinPanel, BorderLayout.EAST);
 
         // Fügt das Movement als buttons hinzu
+        bewegungsButtons = new JButton[4]; // Array mit fester Größe (4 Buttons)
         JPanel controlPanel = new JPanel(new GridLayout(1, 4));
         String[] directions = {"LINKS", "HOCH", "RUNTER", "RECHTS"};
 
         for (int i = 0; i < directions.length; i++) 
         {
-            JButton moveButton = new JButton(directions[i]);
-            moveButton.setFont(new Font("Kino MT", Font.BOLD, 15));
-            moveButton.setBackground(Color.LIGHT_GRAY);
+            bewegungsButtons[i] = new JButton(directions[i]);
+            bewegungsButtons[i].setFont(new Font("Kino MT", Font.BOLD, 20));
+            bewegungsButtons[i].setBackground(Color.LIGHT_GRAY);
             String eingabe = directions[i];
-            moveButton.addActionListener(e -> Bewegung(aktuelleFigur1, aktuelleFigur2, eingabe));
-            controlPanel.add(moveButton);
+            bewegungsButtons[i].addActionListener(e -> Bewegung(aktuelleFigur1, aktuelleFigur2, eingabe));
+            controlPanel.add(bewegungsButtons[i]);
         }
 
         //Fügt die Panels in den Frame
@@ -233,6 +236,14 @@ public class Spiel extends JFrame
             }
         }
         if (spielIstFertig()) return;
+
+        Color spielerFarbe = aktuellerSpieler == f1 ? Color.BLUE : Color.RED;
+        for (JButton button : bewegungsButtons) 
+        {
+            button.setBackground(spielerFarbe);
+            button.setForeground(Color.WHITE); // Textfarbe für besseren Kontrast
+        }
+
 
         statusLabel.setText(aktuellerSpieler == f1 ? "Blau ist am Zug." : "Rot ist am Zug.");
 
