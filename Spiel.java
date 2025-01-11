@@ -173,13 +173,13 @@ public class Spiel extends JFrame
             if(userChoice == JOptionPane.YES_OPTION) restartGame();
             dispose();
         }
-        if (f1.x == 2 && f1.y == 2) 
+        else if (f1.x == 2 && f1.y == 2) 
         {
             int userChoice = JOptionPane.showConfirmDialog(null, f1.farbe + " hat gewonnen! \n \n Wollen sie nochmal spielen?", f1.farbe + " hat gewonnen!", JOptionPane.YES_NO_OPTION);
             if(userChoice == JOptionPane.YES_OPTION) restartGame();
             dispose();
         }
-        if (f2.x == 2 && f2.y == 2) 
+        else if (f2.x == 2 && f2.y == 2) 
         {
             int userChoice = JOptionPane.showConfirmDialog(null, f2.farbe + " hat gewonnen! \n \n Wollen sie nochmal spielen?", f2.farbe + " hat gewonnen!", JOptionPane.YES_NO_OPTION);
             if(userChoice == JOptionPane.YES_OPTION) restartGame();
