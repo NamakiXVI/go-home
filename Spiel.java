@@ -1,6 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.Border;
-
 import java.awt.*;
 import java.util.Random;
 
@@ -75,6 +73,7 @@ public class Spiel extends JFrame
         homePanel.add(Go_Home);
         Go_Home.setBackground(Color.LIGHT_GRAY);
         Go_Home.setBorderPainted(false);
+        Go_Home.addActionListener(e-> restartGame());
         statusPanel.add(homePanel, BorderLayout.WEST);
 
         statusPanel.add(Go_Home,BorderLayout.WEST);
@@ -122,29 +121,21 @@ public class Spiel extends JFrame
         zahl1 = r.nextInt(2);
         zahl2 = r.nextInt(2);
 
-        String Ergebnis = " ";
-
         if(zahl1 == 0)
         {
-            Ergebnis += "Blau ";
             Coin1.setIcon(BCoin);
         }else
         {
-            Ergebnis += "Rot ";
             Coin1.setIcon(RCoin);
         }
 
         if(zahl2 == 0)
         {
-            Ergebnis += "Blau ";
             Coin2.setIcon(BCoin);
         }else
         {
-            Ergebnis += "Rot ";
             Coin2.setIcon(RCoin);
         }
-        
-        System.out.println(Ergebnis);
     }
 
     public void druckeAktuellenSpieler() 
@@ -153,22 +144,18 @@ public class Spiel extends JFrame
         {
             aktuelleFigur1 = f2;
             aktuelleFigur2 = f2;
-//            aktuellerSpieler = f2;
         }else if(zahl1 == 0 && zahl2 == 1)
         {
             aktuelleFigur1 = f1;
             aktuelleFigur2 = f2;
-//            aktuellerSpieler = f1;
         }else if(zahl1 == 1 && zahl2 == 0)
         {
             aktuelleFigur1 = f2;
             aktuelleFigur2 = f1;
-//            aktuellerSpieler = f2;
         }else if (zahl1 == 0 && zahl2 == 0)
         {
             aktuelleFigur1 = f1;
             aktuelleFigur2 = f1;
-//            aktuellerSpieler = f1;
         }
     }
 
@@ -182,18 +169,21 @@ public class Spiel extends JFrame
     {
         if ((f2.x == 2 && f2.y == 2) && (f1.x == 2 && f1.y == 2)) 
         {
-            JOptionPane.showMessageDialog(this, "Es gibt ein Unentschieden");
-            return true;
+            int userChoice = JOptionPane.showConfirmDialog(null,"Es gibt ein Unentschieden \n \n Wollen sie nochmal spielen?","Es gibt ein Unentschieden", JOptionPane.YES_NO_OPTION);
+            if(userChoice == JOptionPane.YES_OPTION) restartGame();
+            dispose();
         }
         if (f1.x == 2 && f1.y == 2) 
         {
-            JOptionPane.showMessageDialog(this, f1.farbe + " hat gewonnen!");
-            return true;
+            int userChoice = JOptionPane.showConfirmDialog(null, f1.farbe + " hat gewonnen! \n \n Wollen sie nochmal spielen?", f1.farbe + " hat gewonnen!", JOptionPane.YES_NO_OPTION);
+            if(userChoice == JOptionPane.YES_OPTION) restartGame();
+            dispose();
         }
         if (f2.x == 2 && f2.y == 2) 
         {
-            JOptionPane.showMessageDialog(this, f2.farbe + " hat gewonnen!");
-            return true;
+            int userChoice = JOptionPane.showConfirmDialog(null, f2.farbe + " hat gewonnen! \n \n Wollen sie nochmal spielen?", f2.farbe + " hat gewonnen!", JOptionPane.YES_NO_OPTION);
+            if(userChoice == JOptionPane.YES_OPTION) restartGame();
+            dispose();
         }
         return false;
     }
@@ -287,5 +277,11 @@ public class Spiel extends JFrame
         aktuellerSpieler = (figur == f1) ? f2 : f1;
 
         updateSpielfeld();
+    }
+
+    public void restartGame()
+    {
+        dispose();
+        main(new String[0]);
     }
 }
