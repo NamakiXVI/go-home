@@ -24,7 +24,7 @@ Das Spiel ist ein rundenbasiertes Brettspiel, bei dem zwei Spieler gegeneinander
 
 Das Spielfeld ist ein 5x5-Raster, in dessen Mitte das "Haus" liegt. Das Ziel ist es, die eigene Figur auf das Haus-Feld (Position: 2,2) zu bewegen.
 
-##Anleitung 
+## Anleitung 
 Ein Spieler hat das Ziel die rote Figur ins Zentrum zu bewegen, der andere Spieler die blaue Figur. Wer das zuerst schafft, hat gewonnen.
 
 Welcher Spieler beginnen darf, wird zufällig ermittelt.
