@@ -7,12 +7,13 @@ Das **Go Home Spiel** wurde für ein Informatik Schulprojekts im Leistungskurs Q
 
 ## Inhaltsverzeichnis
 1. [Spielaufbau](#spielaufbau)
-2. [Funktionen](#funktionen)
-3. [Steuerung](#steuerung)
-4. [Installation](#installation)
-5. [Verwendung](#verwendung)
-6. [Technologien](#technologien)
-7. [Autoren](#autoren)
+2. [Anleitung](#anleitung)
+3. [Funktionen](#funktionen)
+4. [Steuerung](#steuerung)
+5. [Installation](#installation)
+6. [Verwendung](#verwendung)
+7. [Technologien](#technologien)
+8. [Autoren](#autoren)
 
 ---
 
@@ -22,6 +23,15 @@ Das Spiel ist ein rundenbasiertes Brettspiel, bei dem zwei Spieler gegeneinander
 - Spieler 2: Rote Figur
 
 Das Spielfeld ist ein 5x5-Raster, in dessen Mitte das "Haus" liegt. Das Ziel ist es, die eigene Figur auf das Haus-Feld (Position: 2,2) zu bewegen.
+
+##Anleitung 
+Ein Spieler hat das Ziel die rote Figur ins Zentrum zu bewegen, der andere Spieler die blaue Figur. Wer das zuerst schafft, hat gewonnen.
+
+Welcher Spieler beginnen darf, wird zufällig ermittelt.
+
+Der Spieler, der an der Reihe ist, wirft beide Münzen und bestimmt damit die Figuren, die er bewegen muss, egal ob es sich dabei um die eigene Figur oder die des Gegners handelt. Die eigene Figur wird man natürlich versuchen besser zu positionieren, die Figur des Gegenspielers wird man versuchen schlechter zu positionieren.
+
+Dazu werden die beiden aktuellen Figuren um genau ein Feld nach oben, unten, links oder rechts bewegt. Beide Figuren müssen in die gleiche Richtung bewegt werden. Wirft man zwei mal die gleiche Farbe, dann wird die entsprechende Figur um genau zwei Felder in eine Richtung bewegt.
 
 ### Ziel
 - **Blau gewinnt**, wenn die blaue Figur das Haus erreicht.
