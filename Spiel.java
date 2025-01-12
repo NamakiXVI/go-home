@@ -104,7 +104,7 @@ public class Spiel extends JFrame //erbt von JFrame wodurch sie ein Fenster erst
         statusPanel.add(CoinPanel, BorderLayout.EAST); //Coinpanel zu das Statuspanel hinzugefügt
 
         // Fügt das Movement als Buttons hinzu
-        bewegungsButtons = new JButton[4]; // Array mit fester Größe (4 Buttons)
+        bewegungsButtons = new JButton[4]; // Array mit fester Größe als 4 Buttons
         JPanel controlPanel = new JPanel(new GridLayout(1, 4));
         String[] richtung = {"LINKS", "HOCH", "RUNTER", "RECHTS"};// Bewegungsbuttons für die Richtungen LINKS, HOCH, RUNTER, RECHTS
 
@@ -130,7 +130,7 @@ public class Spiel extends JFrame //erbt von JFrame wodurch sie ein Fenster erst
 
     //Diese Funktion gibt den Variablen zahl1 und zahl2 zufällig eine 0 oder 1 und dazu wird nach Bedingung die Icons für die Coins erstellt
     public void coinThrow()
-    {
+    {   
         Random r = new Random();
         zahl1 = r.nextInt(2);
         zahl2 = r.nextInt(2);
@@ -282,6 +282,7 @@ public class Spiel extends JFrame //erbt von JFrame wodurch sie ein Fenster erst
             }
         }
 
+        //checkt ob die Spieler über den Rand gelaufen sind oder nicht
         aktuelleFigur1.checkFeld();
         aktuelleFigur2.checkFeld();
 
