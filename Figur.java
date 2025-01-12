@@ -1,5 +1,8 @@
-//erstellt die Klasse Figur
-public class Figur{
+// Philipp Nguyen, Falk Milbrodt
+// Go-Home Java Projekt
+// Informatik LK 2024 Q2
+// Lehrer: Herr Wessel
+public class Figur{//erstellt die Klasse Figur
     //gibt der Klasse Figur Attribute
     String farbe;
     int x;
